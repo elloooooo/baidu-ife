@@ -1,0 +1,17 @@
+// @authors liuboyu(liuboyu@didichuxing.com)
+doctype html
+html
+    head
+        - 这里定义线上路径
+        - var PATH = "http://static.xiaojukeji.com/tech-bs/prod/findwc"
+        include ../module/meta
+            block CONFIG
+                script.
+                    var $CONFIG = {}
+        body
+            #container
+                block content
+            block footer
+
+            include ../module/footer
+
