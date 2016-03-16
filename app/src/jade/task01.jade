@@ -3,12 +3,12 @@ extends layout/main
 block css
     //-link(href="#{PATH}/css/detail.css" rel="stylesheet")
     //-link(href="#{PATH}/css/assess.css" rel="stylesheet")
-    //-link(href="../stylus/task01.css" rel="stylesheet")
+    link(href="../stylus/task01.css" rel="stylesheet")
     //-link(href="../css/bootstrap.css" rel="stylesheet")
 
 block content
-    h1 网站一级标题
     nav
+        h1 网站一级标题
         ul
             li
                 a(href='#') 导航链接一
@@ -47,10 +47,8 @@ block content
             |这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落.
 
     article
-
         h2 另一篇文章一级标题
         h3 文章二级标题
-
         p
             span(class='author') 文章作者&nbsp;
             time 文章发表时间
@@ -71,9 +69,9 @@ block content
             li 列表项目三
             li 列表项目四
 
+    article
+        h2 图片
         section
-            h2 图片
-
             figure
                 figcaption 好看的图片
                 img(src="../img/hashiqi.jpeg",alt='好看的图片',width='200px')
@@ -174,12 +172,15 @@ block content
                 label
                     input(type="checkbox",name="habit",value="3")
                     | 科学
+                label
+                    input(type="checkbox",name="habit",value="4")
+                    | 文学
                 label(for="self_description") 个人描述
                     textarea(id="self_description",name="self_description",placeholder="这是一个多行输入框,输入个人描述")
                 input(type="submit" value="确认提交")
 
 
-lock footer
+block footer
     //- script(data-main="#{wwwroot}/js/page1" src="#{wwwroot}/vender/require.js")
     //- 默认wwwroot=domain+routerPath,是网络上的静态资源，为了本地测试方便，改成相对目录
     //- script(data-main="../js/page1" src="../vender/require.js")
