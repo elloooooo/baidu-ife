@@ -132,7 +132,7 @@ h2 {
 }
 h3 {
   font-size: 1.2em;
-  color: #ccc;
+  color: #888;
   margin-bottom: 1em;
 }
 article {
@@ -151,15 +151,53 @@ aside {
   -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
   -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
-figure {
+figure.pic {
   width: 230px;
   margin: 1em;
   padding: 0 1em 1em;
-  border: 1px solid #ccc;
+  border: 1px solid #888;
   text-align: center;
 }
-figcaption {
+figure.pic figcaption {
   padding: 1em 0;
+}
+.author,
+time {
+  font-size: 0.8em;
+  color: #888;
+}
+article ol li {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+article ol {
+  margin: 1em 0;
+}
+d,
+table {
+  font-size: 0.8em;
+  border: 0.5px solid #ddd;
+  width: 100%;
+}
+td,
+tr,
+th {
+  border-right: 0.5px solid #ddd;
+  border-bottom: 0.5px solid #ddd;
+  padding: 0.2em;
+  text-align: left;
+}
+tbody tr:last-child td {
+  background-color: #e0e0e0;
+}
+thead {
+  background-color: #2e2e2e;
+  color: #fff;
+}
+aside h2 {
+  font-size: 1.2em;
+  border-left: solid #ddd 2px;
+  padding: 0.5em 1em;
 }
 #container {
   height: 300px;

@@ -20,8 +20,9 @@ block content
                 a(href='#') 导航链接四
 
     article
-        h2 文章一级标题
-        h3 文章二级标题
+        hgroup
+            h2 文章一级标题
+            h3 文章二级标题
         p
             span(class='author') 文章作者&nbsp;
             time 文章发表时间
@@ -36,7 +37,7 @@ block content
             |,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,
             |这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落.
 
-        p
+        figure
             img(src="../img/hashiqi.jpeg",width='200px')
 
         p 这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,换行了<br>
@@ -61,7 +62,7 @@ block content
             | 这是一个很长很长的段落,
             strong 这里有个粗体字
             | ,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落.
-        p
+        figure
             img(src="../img/hashiqi.jpeg" width='200px')
         ul
             li 列表项目一
@@ -72,22 +73,22 @@ block content
     article
         h2 图片
         section
-            figure
+            figure(class="pic")
                 figcaption 好看的图片
                 img(src="../img/hashiqi.jpeg",alt='好看的图片',width='200px')
-            figure
+            figure(class="pic")
                 figcaption 好看的图片
                 img(src="../img/hashiqi.jpeg",alt='好看的图片',width='200px')
-            figure
+            figure(class="pic")
                 figcaption 好看的图片
                 img(src="../img/hashiqi.jpeg",alt='好看的图片',width='200px')
-            figure
+            figure(class="pic")
                 figcaption 好看的图片
                 img(src="../img/hashiqi.jpeg",alt='好看的图片',width='200px')
-            figure
+            figure(class="pic")
                 figcaption 好看的图片
                 img(src="../img/hashiqi.jpeg",alt='好看的图片',width='200px')
-            figure
+            figure(class="pic")
                 figcaption 好看的图片
                 img(src="../img/hashiqi.jpeg",alt='好看的图片',width='200px')
 
@@ -104,7 +105,7 @@ block content
 
         div 下面是一个表格,给表格添加一个border="1"好让你看出是一个表格
 
-            table(border="1px")
+            table
                 thead
                     th 表头
                     th 表头
@@ -134,7 +135,7 @@ block content
                     td(colspan="2") 1000
     aside
         h2 这里以后是一个侧栏,这是侧栏的标题
-        h2 侧栏注册窗口标题
+
         form(action="#",method="post")
             div
                 label(for="email") 请输入邮箱地址
