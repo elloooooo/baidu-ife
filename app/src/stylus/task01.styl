@@ -3,9 +3,9 @@
 @import 'module/form'
 @import 'module/footer'
 
-content()
-  margin 2em
-  padding 2em
+article-bg()
+  margin 20px
+  padding 20px
   background-color #ffffff
   box-shadow 2px 2px 5px rgba(0, 0, 0, .5)
   -webkit-box-shadow 2px 2px 5px rgba(0, 0, 0, .5)
@@ -23,11 +23,26 @@ h3
   color #888888
   margin-bottom 1em
 
+.container:after
+  content ""
+  display block
+  height 0
+  visibility hidden
+  clear both
+
+.main
+  float left
+  margin-right 400px
+
 article
-  content()
+  article-bg()
+  box-sizing content-box
 
 aside
-  content()
+  article-bg()
+  float left
+  width 380px
+  margin 20px 20px 20px -400px
 
 figure.pic
   width 230px
@@ -35,6 +50,7 @@ figure.pic
   padding 0 1em 1em
   border 1px solid #888888
   text-align center
+  display inline-block
 
 figure.pic figcaption
   padding 1em 0
