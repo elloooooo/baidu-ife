@@ -10,9 +10,9 @@ aqiSourceData =
  */
 
 (function() {
-  var aqiSourceData, chartData, pageState;
+  var aqiSourceData, chartData, citySelectChange, getDateStr, graTimeChange, init, initAqiChartData, initCitySelector, initGraTimeForm, pageState, randomBuildData, renderChart;
 
-  getDateStr(function(dat) {
+  getDateStr = function(dat) {
     var d, m, y;
     y = dat.getFullYear();
     m = dat.getMonth() + 1;
@@ -24,12 +24,12 @@ aqiSourceData =
       d = '0' + d;
     }
     return y + '-' + m + '-' + d;
-  });
+  };
 
-  randomBuildData(function(seed) {
+  randomBuildData = function(seed) {
     var dat, datStr, i, j, returnData;
     returnData = {};
-    dat = new Data("2016-01-01");
+    dat = new Date("2016-01-01");
     datStr = '';
     for (i = j = 1; j <= 92; i = ++j) {
       datStr = getDateStr(dat);
@@ -37,7 +37,7 @@ aqiSourceData =
       dat.setDate(dat.getDate() + 1);
     }
     return returnData;
-  });
+  };
 
   aqiSourceData = {
     "北京": randomBuildData(500),
@@ -58,25 +58,43 @@ aqiSourceData =
     nowGraTime: 'day'
   };
 
-  renderChart(function() {});
+  renderChart = function() {};
 
-  graTimeChange(function() {});
+  graTimeChange = function() {
+    var timeType, types;
+    timeType = '';
+    types = document.getElementsByName('gra-time');
+    [].forEach.call(types, function(value) {
+      if (value.checked) {
+        return timeType = value.value;
+      }
+    });
+    if (timeType !== pageState.nowGraTime) {
+      pageState.nowGraTime = timeType;
+      initAqiChartData();
+      return renderChart();
+    }
+  };
 
-  citySelectChange(function() {});
+  citySelectChange = function() {};
 
-  initGraTimeForm()(function() {
-    return document.getElementById("from-gra-time");
-  });
+  initGraTimeForm = function() {
+    var types;
+    types = document.getElementsByName("gra-time");
+    return [].forEach.call(types, function(value) {
+      return value.addEventListener("click", graTimeChange);
+    });
+  };
 
-  initCitySelector(function() {});
+  initCitySelector = function() {};
 
-  initAqiChartData()(function() {});
+  initAqiChartData = function() {};
 
-  init()(function() {
+  init = function() {
     initGraTimeForm();
     initCitySelector();
     return initAqiChartData();
-  });
+  };
 
   init();
 
