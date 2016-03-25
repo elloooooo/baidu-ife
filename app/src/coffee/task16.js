@@ -27,7 +27,7 @@
       document.getElementById('aqi-city-input').focus();
       return;
     }
-    if (!/^[1-9][0-9]?$/.test(city_value)) {
+    if (!/^\d+$/.test(city_value)) {
       alert('请输入正整数!');
       document.getElementById('aqi-value-input').focus();
       return;
@@ -44,7 +44,7 @@
       city_value = aqiData[city_name];
       tabContent.push("<tr>");
       tabContent.push("<td>" + city_name + "</td><td>" + city_value + "</td>");
-      tabContent.push("<td><button>删除</button></td>");
+      tabContent.push("<td><button data-city=" + city_name + ">删除</button></td>");
       tabContent.push("</tr>");
     }
     return tab.innerHTML = tabContent.join('');
@@ -66,7 +66,7 @@
     tab = document.getElementById('aqi-table');
     return tab.addEventListener('click', function(event) {
       if (event.target.nodeName === 'BUTTON' && event.target.innerHTML === '删除') {
-        return delBtnHandle(event.target.parentNode.parentNode.firstChild.innerHTML);
+        return delBtnHandle(event.target.dataset.city);
       }
     }, false);
   };

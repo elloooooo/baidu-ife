@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title IFE JavaScript Task 01
+    body
+        fieldset(id="from-gra-time")
+            legend 选择日期粒度：
+            label 日
+                input(name="gra-time",value="day",type="radio",checked="checked")
+            label 周
+                input(name="gra-time",value="week",type="radio")
+            label 月
+                input(name="gra-time",value="month",type="radio")
+        fieldset
+            legend 选择查看城市：
+            select(id="city-select")
+                option 北京
+
+        div(class="aqi-chart-wrap")
+
+        script(src="../coffee/task17.js")
+
+

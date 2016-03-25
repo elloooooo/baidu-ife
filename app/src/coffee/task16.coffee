@@ -19,7 +19,7 @@ addAqiData = ->
     document.getElementById('aqi-city-input').focus()
     return
 
-  if not /^[1-9][0-9]?$/.test(city_value)
+  if not /^\d+$/.test(city_value)
     alert('请输入正整数!');
     document.getElementById('aqi-value-input').focus();
     return
@@ -34,7 +34,7 @@ renderAqiList = ->
   for city_name,city_value of aqiData
     tabContent.push "<tr>"
     tabContent.push "<td>#{city_name}</td><td>#{city_value}</td>"
-    tabContent.push "<td><button>删除</button></td>"
+    tabContent.push "<td><button data-city=#{city_name}>删除</button></td>"
     tabContent.push "</tr>"
   tab.innerHTML = tabContent.join('')
 
@@ -61,7 +61,7 @@ init = ->
   # 则必须要考虑如何将其作用域传出！
   tab.addEventListener('click', (event)->
     if(event.target.nodeName == 'BUTTON' and event.target.innerHTML == '删除')
-      delBtnHandle(event.target.parentNode.parentNode.firstChild.innerHTML)
+      delBtnHandle(event.target.dataset.city)
   , false)
 
 ###
