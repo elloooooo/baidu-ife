@@ -3,13 +3,17 @@
   var btnHandle, getData, init, render, sortAqiData;
 
   getData = function() {
-    var data, i, item, len, ref;
-    data = [];
-    ref = document.getElementById("source").children;
-    for (i = 0, len = ref.length; i < len; i++) {
-      item = ref[i];
-      data.push([item.firstChild.data.substring(0, 2), item.firstElementChild.innerHTML]);
-    }
+    var data, item;
+    data = (function() {
+      var i, len, ref, results;
+      ref = document.getElementById("source").children;
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        item = ref[i];
+        results.push([item.firstChild.nodeValue.substring(0, 2), item.firstElementChild.innerHTML]);
+      }
+      return results;
+    })();
     return data;
   };
 

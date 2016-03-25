@@ -4,14 +4,13 @@
 # Node有多种，1.Element 2.Attribute 3.Text
 # childNodes 将返回所有的子Node，对于ul的childNodes，很可能包含一个text类型的node（列表前面那个点），然后才是li（Element类型的Node）
 # children 返回的是Element类型的Node->li
-# firstChild 返回第一个Node，如果是text类型，要想对其进行字符串操作，需要用data去访问他的数据
+# firstChild 返回第一个Node，如果是text类型，要想对其进行字符串操作，需要用nodeValue去访问他的数据
 # firstElementChild 返回的是第一个Element类型的Node
 # innerHTML 返回里面的所有内容，包括text和Element
 # innerText 将返回所有text
-getData = ()->
-  data = [];
-  for item in document.getElementById("source").children
-    data.push([item.firstChild.data.substring(0,2), item.firstElementChild.innerHTML])
+getData = ->
+  data = ([item.firstChild.nodeValue.substring(0, 2),
+    item.firstElementChild.innerHTML] for item in document.getElementById("source").children)
   return data
 
 # sortAqiData
@@ -30,17 +29,16 @@ render = (data)->
     index: 0
     list: ""
     tryAddToList: (elem)->
-      this.index++
-      this.list += "<li>第" + this.index + "名:" + elem[0] + "; 污染指数：" + elem[1] + "</li>"
+      @index++
+      @list += "<li>第#{@index}名:#{elem[0]}; 污染指数：#{elem[1]}</li>"
 
-  for item in data
-    listBuilder.tryAddToList(item)
+  listBuilder.tryAddToList item for item in data
   document.getElementById("resort").innerHTML = listBuilder.list
 
-btnHandle = ()->
+btnHandle = ->
   data = getData()
-  sortAqiData(data)
-  render(data)
+  sortAqiData data
+  render data
 
 # 在这下面给sort-btn绑定一个点击事件，点击时触发btnHandle函数
 init = ()->
